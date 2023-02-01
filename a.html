@@ -2,7 +2,7 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
-    <title>エルデンリング</title>
+    <title>タイムチャート</title>
     <!-- link rel="stylesheet" href="styles.css" -->
   </head>
   <body>
@@ -22,96 +22,33 @@
                           ["⑧タグノバでかんばん付き部品運搬", 15,15,15,15],
                           ["⑨出荷場にて出荷待ち", 180,455,180,225],
                           ["⑩トラック出発", 465,275,390,360],
-                          ["⑪トヨ車に到着", 1,1,1,1] ]
-
-            var times = [
-                         "6:30", "7:30", "8:30", "9:30", "10:30", "11:30", "12:30", "13:30", "14:30", "15:30", "16:30", "17:30", "18:30", "19:30", "20:30", "21:30", "22:30", "23:30",
-                         "0:30", "1:30", "2:30", "3:30", "4:30", "5:30", "6:30", "7:30", "8:30", "9:30", "10:30", "11:30", "12:30", "13:30", "14:30", "15:30", "16:30", "17:30", "18:30",
-                         "19:30", "20:30", "21:30", "22:30"
-                        ];
-
-            var paper;
-            var sx = 1900;
-            var sy = 540;
-            // 上マージン (凡例用の空間)
-            var tm = 40;
-            var textpos = 68;
-
-            // // 下マージン (表との隙間)
-            var bm = 20;
-
-            // // 右マージン (目盛用の空間)
-            var rm = 80;
-
-            // // 左マージン (目盛用の空間)
-            var lm = 80;
-            var pos_start_graph = 280;
-
-            var pos_end_graph1 = 1320;
-            var pos_end_graph = 1600;
-            var width_legend = 220;
-            var width_bar = 10;
-
-            var yPitch = 40;
-            var yPitch2 = (sy - tm)/data1.length;
-
-            var yAdjust = 11 * yPitch;
-            var recma = 11;
-
-            var lineColor = "#d6d6d6";
-            var color_of_bar = ["#4472C4","#FF0000","#00B050","#FFC000"];
-
-            // 資産総額の色(文字)
-	          var labelColor1 = "#7188b6";
-
-            var txtAxis = {"font-size": "12px", "font-family": "MS PGothic, Helvetica", "fill": labelColor1, "font-weight": "normal", "text-anchor": "middle"};
-            var txtAxis2 = {"font-size": "12px", "font-family": "MS PGothic, Helvetica", "font-weight": "normal", "text-anchor": "start"};
-            var lt = 0;
-            var lt_offset = [0,230,560,830];
-            var scale_adjust_rate = 0.67;
-
-
-            paper = Raphael("svg", sx, sy);
-            drawRect(paper,lm-20,tm,lm + 140,sy);
-            for (var i = 0; i <= 10; i += 1) {
-              drawText(paper,lm,textpos + (i * yPitch2),data1[i][0],txtAxis2);
-            }
-
-            for (var i = 0; i <= 40; i += 1) {
-              drawLine(paper, pos_start_graph + (i * yPitch),tm, pos_start_graph + (i * yPitch),sy).attr({"stroke": lineColor, "stroke-width": "1"});
-              drawText(paper, pos_start_graph + (i * yPitch) ,tm - 8, times[i], txtAxis);
-            }
-            drawRect(paper,pos_start_graph,tm,pos_start_graph + pos_end_graph1,sy)
-            drawLine(paper,pos_start_graph-width_legend,sy-1,pos_start_graph + pos_end_graph,sy-1);
-            //console.log(data1[0].length);
-            for (var j = 1; j <= data1[0].length; j +=1){
-              var pos_bar = pos_start_graph;
-              lt = 0;
-              console.log("j=" + j);
-              for (var i = 0; i <= data1.length-1; i += 1) {
-                console.log(data1[i][j]);
-                if(data1[i][j]<=3){
-                  lt = 3;
-                }else{
-                  lt = data1[i][j] * scale_adjust_rate;
-                }
-                drawRect(paper,pos_bar + lt_offset[j-1] * scale_adjust_rate, textpos-recma + (i * yPitch2) + (j-1)*width_bar,lt ,width_bar).attr({"stroke": "none", "stroke-width": "0", "fill": color_of_bar[j-1]});
-                pos_bar += lt;
-              }
-            }
-
-           
-            //drawLine(paper,lm + Math.floor(yPitch * i) ,tm, lm + Math.floor(yPitch * i), bm);
-      				//drawLine(paper, lm, sy - Math.floor(i * yPitch) - bm + yAdjust, sx - rm, sy - Math.floor(i * yPitch) - bm + yAdjust).attr({"stroke": lineColor, "stroke-width": "1"});
-              // 目盛文字左
-              //drawText(paper, lm - 8, sy - Math.floor(i * yPitch) - bm + yAdjust, addFigure2(i), txtAxis);
-              // 目盛文字右
-              //drawText(paper, sx - rm + 8, sy - Math.floor(i * yPitch) - bm + yAdjust, addFigure2(i), txtAxis2);	// 評価損益を表示するようになったら削除
-            //}
-            // drawRectWithFrame(paper,100,200,100,200,20);
-            //drawRect(paper,80,40,80,20,20);
-            //drawLine(paper,lm,tm,lm,sy);
-            //var square = paper.path("M" + 10 + " " + 20 + " L" + 3100 + " " + 20);
-    </script>
+                          ["⑪トヨ車に到着", 1,1,1,1],
+                          ["⑫しかし忘れ物を取りに行く", 40,15,1,10],
+                          ["⑬これ以上は増やせないぜ遊戯", 40,15,1,80],
+                          ["遊戯ボーイまだやれるでーす", 40,15,1,80],
+                          ["遊戯ボーイまだやれるでーすですですあああああ", 40,15,1,80],
+                          ["遊戯ボーイまだやれるでーすですですあああああ", 40,15,1,80],
+                          ["遊戯ボーイまだやれるでーすですですあああああ", 40,15,1,80],
+                          ["遊戯ボーイまだやれるでーすですですあああああ", 40,15,1,80],
+                          ["遊戯ボーイまだやれるでーすですですあああああ", 40,15,1,80],
+                          ["遊戯ボーイまだやれるでーすですですあああああ", 40,15,1,80],
+                          ["遊戯ボーイまだやれるでーすですですあああああ", 40,15,1,80],
+                          ["遊戯ボーイまだやれるでーすですですあああああ", 40,15,1,80],
+                          ["遊戯ボーイまだやれるでーすですですあああああ", 40,15,1,80],
+                          ["遊戯ボーイまだやれるでーすですですあああああ", 40,15,1,80],
+                          ["遊戯ボーイまだやれるでーすですですあああああ", 40,15,1,80],
+                          ["遊戯ボーイまだやれるでーすですですあああああ", 40,15,1,80],
+                          ["遊戯ボーイまだやれるでーすですですあああああ", 40,15,1,80],
+                          ["遊戯ボーイまだやれるでーすですですあああああ", 40,15,1,80],
+                          ["遊戯ボーイまだやれるでーすですですあああああ", 40,15,1,80],
+                          ["遊戯ボーイまだやれるでーすですですあああああ", 40,15,1,80],
+                          ["遊戯ボーイまだやれるでーすですですあああああ", 40,15,1,80],
+                          ["遊戯ボーイまだやれるでーすですですあああああ", 40,15,1,80],
+                          ["遊戯ボーイまだやれるでーすですですあああああ", 40,15,1,80],
+                          ["遊戯ボーイまだやれるでーすですですあああああ", 40,15,1,80],
+                      
+                         ]
+            graph_Description(data1);
+          </script>
   </body>
 </html>
